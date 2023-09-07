@@ -1,9 +1,13 @@
 import SearchIcon from "./icons/Search";
 
 export default function Navbar() {
+
     return (
-        <nav className="container m-auto flex justify-center items-center z-20 top-0 left-0 p-3">
-            <div>
+        <nav
+            className="flex justify-center items-center transition-all 
+                        w-4/5 sm:w-3/5 md:w-2/4 xl:w-2/4
+                        m-auto z-20 top-0 left-0 p-3">
+            <div className="">
                 <a href="/" className="flex items-center">
                     <img src="/logo_ml.png" className="h-8 mr-3" alt="Meli Logo" />
                 </a>
@@ -16,7 +20,7 @@ export default function Navbar() {
                                 type="search"
                                 className="
                                     block p-2.5 w-full 
-                                    xl:w-16 z-20 text-sm 
+                                    z-20 text-sm 
                                     text-gray-900 bg-gray-50 
                                     rounded-l-lg rounded-r-lg
                                     border-gray-100 outline-0 outline-transparent
