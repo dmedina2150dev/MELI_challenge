@@ -47,13 +47,10 @@ export default function SearchForm() {
                         autoComplete='off'
                         placeholder='Buscar productos, marcas y más'
                         className='
-                            block p-2.5 w-full 
-                            z-20 text-sm 
-                            text-gray-900 bg-gray-50 
+                            block p-2.5 w-full text-sm 
+                            text-gray-800 bg-gray-50 
                             rounded-l-lg rounded-r-lg
-                            border-gray-100 outline-0 outline-transparent
-                            active:border-0 focus:border-0'
-                        />
+                            border-gray-100 outline-0 outline-offset-0 border-0'/>
                     <button
                         type='submit'
                         className='
