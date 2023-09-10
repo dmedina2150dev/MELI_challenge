@@ -6,7 +6,8 @@ type PageProps = {
 	searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-const fetchProducts = ( query: string ) => {
+const fetchProducts = async ( query: string ) => {
+
 	return fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${query}&limit=10`)
 		.then( res => res.json() )
 }
