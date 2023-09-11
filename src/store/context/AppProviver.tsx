@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react'
 import { ContextState, appReducer } from './appReducer';
 import { AppContext } from '.';
+import { Product } from '@/components/products/interfaces/product';
 
 interface AppProviderProps {
     children: React.ReactNode | React.ReactNode[]
@@ -21,12 +22,17 @@ export const AppProvider = ({ children }: AppProviderProps)  => {
         dispatch({ type: '[Searchs] Add term search', payload: term });
     }
 
+    const loadProducts = (products: Product[]) => {
+        dispatch({ type: '[Products] Load products', payload: products });
+    }
+
     return (
         <AppContext.Provider value={{
             termSearch,
             products,
 
-            addTermSearch
+            addTermSearch,
+            loadProducts
         }}>
             { children }
         </AppContext.Provider>

@@ -10,6 +10,7 @@ export type AppActions =
     | { type: '[Products] Load products', payload: Product[] }
 
 export const appReducer = (state: ContextState, action: AppActions ): ContextState => {
+    // console.log(state)
     switch ( action.type ) {
         case '[Searchs] Add term search':
             return {
