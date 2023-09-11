@@ -1,6 +1,6 @@
-import { Request } from "../interfaces/product"
+import { ResponseMethod } from '../interfaces/requests'
 
-export const DATA_MOCK: Request = {
+export const DATA_MOCK: ResponseMethod = {
     "site_id": "MLA",
     "country_default_time_zone": "GMT-03:00",
     "query": "apple",
