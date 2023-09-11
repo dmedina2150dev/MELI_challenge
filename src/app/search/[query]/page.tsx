@@ -1,13 +1,13 @@
-import CardList from "@/components/products/CardList";
 import React from "react";
+
+import Container from "@/components/products/Container";
 
 type PageProps = {
 	params: { query: string };
 	searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-const fetchProducts = async ( query: string ) => {
-
+const fetchSearchsProducts = async ( query: string ) => {
 	return fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${query}&limit=10`)
 		.then( res => res.json() )
 }
@@ -15,8 +15,7 @@ const fetchProducts = async ( query: string ) => {
 export default async function SearchPage({ params }: PageProps) {
 
 	const { query } = params;
-	const products = await fetchProducts(query);
+	const search = await fetchSearchsProducts(query);
 
-	console.log({query})
-	return  <CardList products={ products.results } />
+	return  <Container response={ search } />
 }
