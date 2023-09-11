@@ -18,11 +18,11 @@ export default function Sort() {
                     <button
                         type='button'
                         onClick={ toogleOption }
-                        className='inline-flex w-full justify-center gap-x-1.5 px-3 py-2 text-sm text-gray-900 transition-all' 
+                        className='inline-flex w-full justify-center gap-x-1.5 px-3 py-2 text-sm text-gray-900 font-semibold transition-all' 
                         id='menu-button'
                         aria-expanded='true'
                         aria-haspopup='true'>
-                        Ordenar por <span>Más relevantes</span>
+                        Ordenar por <span className='font-normal'>Más relevantes</span>
                         {
                             (show)
                             ? <ArrorLowShort />
