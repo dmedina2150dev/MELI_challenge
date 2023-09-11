@@ -1,5 +1,5 @@
 
-import SearchForm from "./SearchForm";
+import SearchForm from '../search/SearchForm'
 
 export default function Navbar() {
 

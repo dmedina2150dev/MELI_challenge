@@ -8,29 +8,29 @@ import * as z from 'zod'
 
 import { searchSchema } from '../products/schema/search'
 import SearchIcon from '../icons/Search'
+import { useContext } from 'react'
+import { AppContext } from '@/store/context'
 
 type FormData = z.infer<typeof searchSchema>;
 
 export default function SearchForm() {
     const router = useRouter()
 
+    const { termSearch, addTermSearch } = useContext(AppContext)
+
     const {
         handleSubmit,
         register,
         formState: { errors, isSubmitting, isDirty, isValid }
     } = useForm<FormData>({
-        resolver: zodResolver<any>(searchSchema)
+        resolver: zodResolver<any>(searchSchema),
+        defaultValues: {
+            search: termSearch
+        }
     })
 
     async function onSubmit(data: FormData) {
-        console.log(isSubmitting)
-        console.log(data)
-        // Replace this with a server action or fetch an API endpoint to authenticate
-        await new Promise<void>((resolve) => {
-            setTimeout(() => {
-                resolve()
-            }, 2000) // 2 seconds in milliseconds
-        })
+        addTermSearch(data.search);
         router.push(`/search/${ data.search }`)
     }
 
