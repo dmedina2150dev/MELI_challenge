@@ -2,6 +2,7 @@
 
 import { AppProvider } from '@/store/context'
 import Navbar from '../ui/Navbar'
+import Sort from '../products/Sort'
 
 interface ProvidersProps { children: React.ReactNode }
 
@@ -24,6 +25,7 @@ export function Providers({ children }: ProvidersProps) {
                         $ 60.000 <span>a</span> $70.000 <span>(20)</span>
                     </p>
                 </aside>
+                <Sort />
                 <section className='min-h-screen min-w-full'>
                     {children}
                 </section>            
