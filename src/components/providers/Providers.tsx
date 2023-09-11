@@ -1,18 +1,13 @@
 'use client'
 
-import { AppContext, AppContextProps } from '@/store/context'
+import { AppProvider } from '@/store/context'
 import Navbar from '../ui/Navbar'
-
-const initData: AppContextProps = {
-    termSearch: '',
-    products: []
-}
 
 interface ProvidersProps { children: React.ReactNode }
 
 export function Providers({ children }: ProvidersProps) {
     return (
-        <AppContext.Provider value={initData}>
+        <AppProvider>
             <header className="bg-amber-300 fixed w-full">
                 <Navbar />
             </header>
@@ -36,6 +31,6 @@ export function Providers({ children }: ProvidersProps) {
             <div className="w-full h-12 fixed bottom-0 bg-white rounded text-gray-200 sm:flex md:hidden">
                 <p>Filtros</p>
             </div>
-        </AppContext.Provider>
+        </AppProvider>
     )
 }

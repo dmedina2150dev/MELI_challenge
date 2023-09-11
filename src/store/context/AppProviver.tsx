@@ -16,6 +16,7 @@ export const AppProvider = ({ children }: AppProviderProps)  => {
     const [ appState, dispatch ] = useReducer( appReducer, INITIAL_STATE );
     const { termSearch, products } = appState;
 
+    
     const addTermSearch = (term: string) => {
         dispatch({ type: '[Searchs] Add term search', payload: term });
     }
@@ -23,7 +24,9 @@ export const AppProvider = ({ children }: AppProviderProps)  => {
     return (
         <AppContext.Provider value={{
             termSearch,
-            products
+            products,
+
+            addTermSearch
         }}>
             { children }
         </AppContext.Provider>

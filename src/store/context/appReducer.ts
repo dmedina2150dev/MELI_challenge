@@ -1,4 +1,4 @@
-import { Product } from "@/components/products/interfaces/product";
+import { Product } from '@/components/products/interfaces/product';
 
 export interface ContextState {
     termSearch: string;
