@@ -1,5 +1,4 @@
-import { DATA_MOCK } from "@/components/products/database/base";
-import CardProduct from "./CardProduct";
+import CardProduct from './CardProduct';
 import { Product } from "./interfaces/product";
 
 interface CardListProps {
@@ -15,7 +14,10 @@ export default function CardList({ products }: CardListProps) {
          w-3/4 sm:w-3/5 md:w-2/4 lg:w-2/3 xl:w-3/5">
       {
         products.map(product => (
-          <CardProduct key={product.catalog_product_id} product={product} />
+          <CardProduct
+            key={`${product.id}-${product.title}-${product.address.state_name}`}
+            product={product} 
+          />
         ))
       }
     </section>
