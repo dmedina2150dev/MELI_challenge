@@ -25,10 +25,8 @@ export function Providers({ children }: ProvidersProps) {
                         $ 60.000 <span>a</span> $70.000 <span>(20)</span>
                     </p>
                 </aside>
-                <Sort />
-                <section className='min-h-screen min-w-full'>
-                    {children}
-                </section>            
+                
+                {children}          
             </main>
             <div className="w-full h-12 fixed bottom-0 bg-white rounded text-gray-200 sm:flex md:hidden">
                 <p>Filtros</p>
