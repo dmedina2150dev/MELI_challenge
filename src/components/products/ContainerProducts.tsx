@@ -12,15 +12,14 @@ interface Props {
     response: ResponseMethod
 }
 
-export default function Container({ response }: Props) {
+export default function ContainerProducts({ response }: Props) {
 
-    const { products, loadProducts, loadAvailableSort, hanldleSelectedSort } = useContext(AppContext);
+    const { products, selectedSort ,loadProducts, loadAvailableSort, hanldleSelectedSort } = useContext(AppContext);
 
     useEffect(() => {
         loadProducts(useProducts({ searchsProducts: response.results }));
-        hanldleSelectedSort( response.sort );
         loadAvailableSort(useSort({ sort: response.sort, available_sorts: response.available_sorts }));
-    }, [response]);
+    }, [response, selectedSort]);
 
     return (
         <section className='min-h-screen min-w-full'>
