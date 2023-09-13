@@ -32,7 +32,9 @@ export default function SearchForm() {
     async function onSubmit(data: FormData) {
         addTermSearch(data.search);
         
-        console.log(isDirty, isValid)
+        if( !termSearch ) {
+            console.log("PAso")
+        }
 
         router.push(`/search/${data.search}`)
     }

@@ -19,7 +19,14 @@ export default function Sort() {
     const changeSelected = ( sort: Sort ) => {
         hanldleSelectedSort( sort );
         setShow( false );
-        router.push(`/search/${termSearch}?sort=${sort.id.toUpperCase()}`);
+
+        if( termSearch ) {
+            console.log("PAso")
+            router.push(`/search/${termSearch}?sort=${sort.id.toUpperCase()}`);
+        } else {
+            router.push('/error');
+        }
+        
     }
 
     return (
@@ -29,16 +36,21 @@ export default function Sort() {
                         <button
                             type='button'
                             onClick={toogleOption}
-                            className='inline-flex w-full justify-center gap-x-1.5 px-3 py-2 text-sm text-gray-900 font-semibold transition-all'
+                            className='inline-flex w-full items-center justify-center
+                                gap-x-1.5 px-3 py-2 text-sm text-gray-900 
+                                font-semibold transition-all
+                                '
                             id='menu-button'
                             aria-expanded='true'
                             aria-haspopup='true'>
                             Ordenar por <span className='font-normal'>{selectedSort.name}</span>
-                            {
-                                (show)
-                                    ? <ArrorLowShort />
-                                    : <ArrowUpShort />
-                            }
+                            <span className='transition-all'>
+                                {
+                                    (show)
+                                        ? <ArrorLowShort />
+                                        : <ArrowUpShort />
+                                }
+                            </span>
                         </button>
                     </div>
 

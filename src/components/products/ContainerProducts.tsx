@@ -8,6 +8,7 @@ import CardList from './CardList'
 import { ResponseMethod } from './interfaces/requests'
 import { useProducts, useSort, useFilter } from '@/hooks'
 import Filters from './Filters';
+import { redirect } from 'next/navigation';
 
 
 interface Props {
@@ -16,7 +17,7 @@ interface Props {
 
 export default function ContainerProducts({ response }: Props) {
 
-    const { products ,loadProducts, loadAvailableSort, loadAvailableFilter } = useContext(AppContext);
+    const { products, termSearch, loadProducts, loadAvailableSort, loadAvailableFilter } = useContext(AppContext);
     const { filters } = useFilter(response.available_filters);
 
     useEffect(() => {
@@ -24,6 +25,10 @@ export default function ContainerProducts({ response }: Props) {
         loadAvailableSort(useSort({ sort: response.sort, available_sorts: response.available_sorts }));
         loadAvailableFilter(filters)
     }, [response]);
+    
+    if( response.results.length === 0 && termSearch) {
+        redirect('/');
+    }
 
     return (
         <section className='min-h-screen min-w-full'>

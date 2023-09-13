@@ -15,7 +15,7 @@ const INITIAL_STATE: ContextState = {
     products: [],
     sortAvailables: [],
     availableFilters: [],
-    selectedSort: {id: '', name: ''},
+    selectedSort: {id: 'relevance', name: 'Más relevantes'},
 }
 
 export const AppProvider = ({ children }: AppProviderProps)  => {
