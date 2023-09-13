@@ -6,7 +6,7 @@ import { AppContext } from '@/store/context'
 import Sort from './Sort';
 import CardList from './CardList'
 import { ResponseMethod } from './interfaces/requests'
-import { useProducts, useSort, useFilter } from '@/hooks'
+import { useProducts, useSort, useFilter, useFilterAvailable } from '@/hooks'
 import Filters from './Filters';
 import { redirect } from 'next/navigation';
 
@@ -18,12 +18,12 @@ interface Props {
 export default function ContainerProducts({ response }: Props) {
 
     const { products, termSearch, loadProducts, loadAvailableSort, loadAvailableFilter } = useContext(AppContext);
-    const { filters } = useFilter(response.available_filters);
+
 
     useEffect(() => {
         loadProducts(useProducts({ searchsProducts: response.results }));
         loadAvailableSort(useSort({ sort: response.sort, available_sorts: response.available_sorts }));
-        loadAvailableFilter(filters)
+        loadAvailableFilter(useFilterAvailable(response.available_filters));
     }, [response]);
     
     if( response.results.length === 0 && termSearch) {

@@ -7,21 +7,21 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 
-import { searchSchema } from '../products/schema/search'
+import { searchSchema } from '../products/schema'
 import SearchIcon from '../icons/Search'
 import { AppContext } from '@/store/context'
+import { buildUrl } from '@/helpers/buildUrl'
 
 type FormData = z.infer<typeof searchSchema>;
 
 export default function SearchForm() {
     const router = useRouter()
 
-    const { termSearch, selectedSort, addTermSearch } = useContext(AppContext)
+    const { termSearch, selectedSort, selectedPrice, addTermSearch } = useContext(AppContext)
 
     const {
         handleSubmit,
         register,
-        formState: { errors, isSubmitting, isDirty, isValid }
     } = useForm<FormData>({
         resolver: zodResolver<any>(searchSchema),
         defaultValues: {
@@ -31,17 +31,13 @@ export default function SearchForm() {
 
     async function onSubmit(data: FormData) {
         addTermSearch(data.search);
-        
-        if( !termSearch ) {
-            console.log("PAso")
-        }
-
-        router.push(`/search/${data.search}`)
+        const url = buildUrl(data.search, selectedSort, selectedPrice);
+        router.push(url);
     }
 
 
     return (
-        <form autoComplete='false' onSubmit={handleSubmit(onSubmit)}>
+        <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
             <div className='flex'>
                 <div className='relative w-full'>
                     <input

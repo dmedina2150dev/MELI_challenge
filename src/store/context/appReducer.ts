@@ -6,7 +6,9 @@ export interface ContextState {
     products: Product[];
     sortAvailables: Sort[];
     availableFilters: Filter[];
-    selectedSort: Sort
+    selectedSort: Sort;
+    selectedPrice: string;
+
 }
 
 export type AppActions = 
@@ -15,6 +17,7 @@ export type AppActions =
     | { type: '[Products - Sort] Load sort available for products', payload: Sort[] }
     | { type: '[Products - Sort] Selected Sort', payload: Sort }
     | { type: '[Products - Filter] Load filter available for products', payload: Filter[] }
+    | { type: '[Products - Filter] Selected Price', payload: string }
 
 export const appReducer = (state: ContextState, action: AppActions ): ContextState => {
     // console.log(state)
@@ -39,11 +42,16 @@ export const appReducer = (state: ContextState, action: AppActions ): ContextSta
                 ...state,
                 selectedSort: action.payload
             }
-        case '[Products - Filter] Load filter available for products':
-            return {
-                ...state,
-                availableFilters: [...action.payload]
-            }
+            case '[Products - Filter] Load filter available for products':
+                return {
+                    ...state,
+                    availableFilters: [...action.payload]
+                }
+            case '[Products - Filter] Selected Price':
+                return {
+                    ...state,
+                    selectedPrice: action.payload
+                }
         default:
             return state;
     }

@@ -15,13 +15,14 @@ const INITIAL_STATE: ContextState = {
     products: [],
     sortAvailables: [],
     availableFilters: [],
-    selectedSort: {id: 'relevance', name: 'Más relevantes'},
+    selectedSort: {id: '', name: ''},
+    selectedPrice: ''
 }
 
 export const AppProvider = ({ children }: AppProviderProps)  => {
 
     const [ appState, dispatch ] = useReducer( appReducer, INITIAL_STATE );
-    const { termSearch, products, sortAvailables, selectedSort, availableFilters } = appState;
+    const { termSearch, products, sortAvailables, selectedSort, availableFilters, selectedPrice } = appState;
 
     
     const addTermSearch = (term: string) => {
@@ -43,6 +44,10 @@ export const AppProvider = ({ children }: AppProviderProps)  => {
     const loadAvailableFilter = (filters: Filter[]) => {
         dispatch({ type: '[Products - Filter] Load filter available for products', payload: filters });
     }
+    
+    const hanldleSelectedPrice = ( price: string ) => {
+        dispatch({ type: '[Products - Filter] Selected Price', payload: price });
+    }
 
     return (
         <AppContext.Provider value={{
@@ -51,12 +56,14 @@ export const AppProvider = ({ children }: AppProviderProps)  => {
             sortAvailables,
             availableFilters,
             selectedSort,
+            selectedPrice,
             
             addTermSearch,
             loadProducts,
             loadAvailableSort,
             hanldleSelectedSort,
-            loadAvailableFilter
+            loadAvailableFilter,
+            hanldleSelectedPrice
         }}>
             { children }
         </AppContext.Provider>

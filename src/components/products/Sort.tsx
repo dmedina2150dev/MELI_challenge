@@ -6,11 +6,12 @@ import { useRouter } from 'next/navigation';
 import { ArrorLowShort, ArrowUpShort } from '../icons/Arrows';
 import { AppContext } from '@/store/context';
 import { Sort } from './interfaces';
+import { buildUrl } from '@/helpers/buildUrl';
 
 export default function Sort() {
     const router = useRouter();
     const [show, setShow] = useState(false);
-    const { termSearch, selectedSort, sortAvailables:sorts, hanldleSelectedSort } = useContext(AppContext);
+    const { termSearch, selectedSort, sortAvailables:sorts, selectedPrice, hanldleSelectedSort } = useContext(AppContext);
 
     const toogleOption = () => {
         setShow(!show)
@@ -19,10 +20,10 @@ export default function Sort() {
     const changeSelected = ( sort: Sort ) => {
         hanldleSelectedSort( sort );
         setShow( false );
-
+        
         if( termSearch ) {
-            console.log("PAso")
-            router.push(`/search/${termSearch}?sort=${sort.id.toUpperCase()}`);
+            const url = buildUrl(termSearch, sort, selectedPrice);
+            router.push(url);
         } else {
             router.push('/error');
         }
@@ -43,7 +44,7 @@ export default function Sort() {
                             id='menu-button'
                             aria-expanded='true'
                             aria-haspopup='true'>
-                            Ordenar por <span className='font-normal'>{selectedSort.name}</span>
+                            Ordenar por <span className='font-normal'>{selectedSort.name || 'Más relevantes'}</span>
                             <span className='transition-all'>
                                 {
                                     (show)
