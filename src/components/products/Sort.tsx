@@ -64,12 +64,12 @@ export default function Sort() {
                             focus:outline-none'
                         role='menu' aria-orientation='vertical' aria-labelledby='menu-button' tabIndex={1}>
                         <div className='py-0 divide-y divide-gray-300' role='none'>
-                            <ul className='rounded'>
+                            <ul className='rounded
+                                    [&>*:nth-child(3)]:rounded-b-md
+                                    [&>*:nth-child(1)]:rounded-t-md'>
                                 {
                                     sorts.map(sort => (
                                         <li key={sort.id} className={`
-                                                ${(sort.id === 'price_desc') ? 'rounded-b-md' : ''}
-                                                ${(sort.id === 'relevance') ? 'rounded-t-md' : ''}
                                                 text-gray-700 block px-6 py-3 text-sm transition-all
                                                 ${(sort.id === selectedSort.id) ? 'border-l-4 border-blue-700' : ''}
                                                 hover:bg-slate-200 hover:border-l-4 hover:border-blue-300`}
