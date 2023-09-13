@@ -1,8 +1,7 @@
-import { Filter } from "@/components/products/interfaces";
-
+import { Filter } from '@/components/products/interfaces'
 
 export const useFilterAvailable = (availableFilters: Filter[]) => {
-    const filters = availableFilters.filter( (exist: Filter) => exist.id === 'price' );
+  const filters = availableFilters.filter((exist: Filter) => exist.id === 'price')
 
-    return filters;
+  return filters
 }

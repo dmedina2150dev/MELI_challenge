@@ -1,5 +1,4 @@
-import { Filter, Product, Sort } from '@/components/products/interfaces';
-
+import { Filter, Product, Sort } from '@/components/products/interfaces'
 
 export interface ContextState {
     termSearch: string;
@@ -11,7 +10,7 @@ export interface ContextState {
 
 }
 
-export type AppActions = 
+export type AppActions =
     | { type: '[Searchs] Add term search', payload: string }
     | { type: '[Products] Load products', payload: Product[] }
     | { type: '[Products - Sort] Load sort available for products', payload: Sort[] }
@@ -19,40 +18,40 @@ export type AppActions =
     | { type: '[Products - Filter] Load filter available for products', payload: Filter[] }
     | { type: '[Products - Filter] Selected Price', payload: string }
 
-export const appReducer = (state: ContextState, action: AppActions ): ContextState => {
-    // console.log(state)
-    switch ( action.type ) {
-        case '[Searchs] Add term search':
-            return {
-                ...state,
-                termSearch: action.payload
-            }
-        case '[Products] Load products':
-            return {
-                ...state,
-                products: [...action.payload]
-            }
-        case '[Products - Sort] Load sort available for products':
-            return {
-                ...state,
-                sortAvailables: [...action.payload]
-            }
-        case '[Products - Sort] Selected Sort':
-            return {
-                ...state,
-                selectedSort: action.payload
-            }
-            case '[Products - Filter] Load filter available for products':
-                return {
-                    ...state,
-                    availableFilters: [...action.payload]
-                }
-            case '[Products - Filter] Selected Price':
-                return {
-                    ...state,
-                    selectedPrice: action.payload
-                }
-        default:
-            return state;
-    }
-} 
+export const appReducer = (state: ContextState, action: AppActions): ContextState => {
+  // console.log(state)
+  switch (action.type) {
+    case '[Searchs] Add term search':
+      return {
+        ...state,
+        termSearch: action.payload
+      }
+    case '[Products] Load products':
+      return {
+        ...state,
+        products: [...action.payload]
+      }
+    case '[Products - Sort] Load sort available for products':
+      return {
+        ...state,
+        sortAvailables: [...action.payload]
+      }
+    case '[Products - Sort] Selected Sort':
+      return {
+        ...state,
+        selectedSort: action.payload
+      }
+    case '[Products - Filter] Load filter available for products':
+      return {
+        ...state,
+        availableFilters: [...action.payload]
+      }
+    case '[Products - Filter] Selected Price':
+      return {
+        ...state,
+        selectedPrice: action.payload
+      }
+    default:
+      return state
+  }
+}

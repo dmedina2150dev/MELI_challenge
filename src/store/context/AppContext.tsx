@@ -1,7 +1,5 @@
-import { createContext } from 'react';
-import { Filter, Product, Sort } from '@/components/products/interfaces';
-
-
+import { createContext } from 'react'
+import { Filter, Product, Sort } from '@/components/products/interfaces'
 
 export interface AppContextProps {
     termSearch: string;
@@ -18,4 +16,4 @@ export interface AppContextProps {
     hanldleSelectedPrice: (price: string) => void;
 }
 
-export const AppContext = createContext<AppContextProps>({} as AppContextProps );
+export const AppContext = createContext<AppContextProps>({} as AppContextProps)

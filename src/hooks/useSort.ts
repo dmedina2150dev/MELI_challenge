@@ -1,17 +1,15 @@
-import { Sort } from "@/components/products/interfaces";
-
+import { Sort } from '@/components/products/interfaces'
 
 interface Props {
     sort: Sort;
-    available_sorts: Sort[];
+    availableSorts: Sort[];
 }
 
-export const useSort = ({ sort, available_sorts }: Props) => {
+export const useSort = ({ sort, availableSorts }: Props) => {
+  const sorts: Sort[] = []
 
-    let sorts: Sort[] = [];
+  sorts.push(sort)
+  availableSorts.forEach((s: Sort) => sorts.push(s))
 
-    sorts.push(sort);
-    available_sorts.forEach( s => sorts.push(s))
-
-    return sorts
+  return sorts
 }
