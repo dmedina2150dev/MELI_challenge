@@ -19,7 +19,7 @@ export default function Sort() {
     const changeSelected = ( sort: Sort ) => {
         hanldleSelectedSort( sort );
         setShow( false );
-        router.push(`/search/${termSearch}?sort=${sort.id}`);
+        router.push(`/search/${termSearch}?sort=${sort.id.toUpperCase()}`);
     }
 
     return (

@@ -1,7 +1,8 @@
 import React, { useReducer } from 'react'
 import { ContextState, appReducer } from './appReducer';
 import { AppContext } from '.';
-import { Product, Sort } from '@/components/products/interfaces';
+import { Product, Sort, Filter } from '@/components/products/interfaces';
+
 
 
 
@@ -13,13 +14,14 @@ const INITIAL_STATE: ContextState = {
     termSearch: '',
     products: [],
     sortAvailables: [],
+    availableFilters: [],
     selectedSort: {id: 'relevance', name: 'Más relevantes'},
 }
 
 export const AppProvider = ({ children }: AppProviderProps)  => {
 
     const [ appState, dispatch ] = useReducer( appReducer, INITIAL_STATE );
-    const { termSearch, products, sortAvailables, selectedSort } = appState;
+    const { termSearch, products, sortAvailables, selectedSort, availableFilters } = appState;
 
     
     const addTermSearch = (term: string) => {
@@ -33,9 +35,13 @@ export const AppProvider = ({ children }: AppProviderProps)  => {
     const loadAvailableSort = (sorts: Sort[]) => {
         dispatch({ type: '[Products - Sort] Load sort available for products', payload: sorts });
     }
-
+    
     const hanldleSelectedSort = ( sort: Sort ) => {
         dispatch({ type: '[Products - Sort] Selected Sort', payload: sort });
+    }
+    
+    const loadAvailableFilter = (filters: Filter[]) => {
+        dispatch({ type: '[Products - Filter] Load filter available for products', payload: filters });
     }
 
     return (
@@ -43,12 +49,14 @@ export const AppProvider = ({ children }: AppProviderProps)  => {
             termSearch,
             products,
             sortAvailables,
+            availableFilters,
             selectedSort,
             
             addTermSearch,
             loadProducts,
             loadAvailableSort,
-            hanldleSelectedSort
+            hanldleSelectedSort,
+            loadAvailableFilter
         }}>
             { children }
         </AppContext.Provider>

@@ -1,10 +1,11 @@
-import { Product, Sort } from '@/components/products/interfaces';
+import { Filter, Product, Sort } from '@/components/products/interfaces';
 
 
 export interface ContextState {
     termSearch: string;
     products: Product[];
     sortAvailables: Sort[];
+    availableFilters: Filter[];
     selectedSort: Sort
 }
 
@@ -13,6 +14,7 @@ export type AppActions =
     | { type: '[Products] Load products', payload: Product[] }
     | { type: '[Products - Sort] Load sort available for products', payload: Sort[] }
     | { type: '[Products - Sort] Selected Sort', payload: Sort }
+    | { type: '[Products - Filter] Load filter available for products', payload: Filter[] }
 
 export const appReducer = (state: ContextState, action: AppActions ): ContextState => {
     // console.log(state)
@@ -36,6 +38,11 @@ export const appReducer = (state: ContextState, action: AppActions ): ContextSta
             return {
                 ...state,
                 selectedSort: action.payload
+            }
+        case '[Products - Filter] Load filter available for products':
+            return {
+                ...state,
+                availableFilters: [...action.payload]
             }
         default:
             return state;
