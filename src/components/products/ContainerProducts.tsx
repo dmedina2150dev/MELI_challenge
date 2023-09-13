@@ -31,7 +31,7 @@ export default function ContainerProducts({ response }: Props) {
     }
 
     return (
-        <section className='min-h-screen min-w-full'>
+        <section className='min-h-screen min-w-full relative -z-10'>
             <Sort />
             <div className='flex items-start mx-auto container'>
                 <Filters />
