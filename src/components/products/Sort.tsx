@@ -23,7 +23,7 @@ export default function Sort() {
     }
 
     return (
-        <div className='mx-auto w-3/4 sm:w-3/5 md:w-2/4 lg:w-2/3 xl:w-3/5 flex justify-end'>
+        <div className='mx-auto hidden sm:hidden md:flex lg:flex xl:flex justify-end container'>
             <div className='relative inline-block'>
                     <div className='flex items-center justify-between'>
                         <button

@@ -6,7 +6,9 @@ import { AppContext } from '@/store/context'
 import Sort from './Sort';
 import CardList from './CardList'
 import { ResponseMethod } from './interfaces/requests'
-import { useProducts, useSort } from '@/hooks'
+import { useProducts, useSort, useFilter } from '@/hooks'
+import Filters from './Filters';
+
 
 interface Props {
     response: ResponseMethod
@@ -14,17 +16,22 @@ interface Props {
 
 export default function ContainerProducts({ response }: Props) {
 
-    const { products, selectedSort ,loadProducts, loadAvailableSort, hanldleSelectedSort } = useContext(AppContext);
+    const { products ,loadProducts, loadAvailableSort, loadAvailableFilter } = useContext(AppContext);
+    const { filters } = useFilter(response.available_filters);
 
     useEffect(() => {
         loadProducts(useProducts({ searchsProducts: response.results }));
         loadAvailableSort(useSort({ sort: response.sort, available_sorts: response.available_sorts }));
-    }, [response, selectedSort]);
+        loadAvailableFilter(filters)
+    }, [response]);
 
     return (
         <section className='min-h-screen min-w-full'>
             <Sort />
-            <CardList products={products} />
+            <div className='flex items-start mx-auto container'>
+                <Filters />
+                <CardList products={products} />
+            </div>
         </section>
     )
 }

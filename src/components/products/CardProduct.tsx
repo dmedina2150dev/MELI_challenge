@@ -20,7 +20,7 @@ export default function CardProduct({ product }: CardProductProps) {
 						alt={ product.title }
 						className="w-full h-full object-contain" />
 				</div>
-				<div className="flex flex-col gap-4 sm:gap-6 pt-4 flex-1 min-w-0">
+				<div className="flex flex-col gap-2 sm:gap-2  pt-4 flex-1 min-w-0">
 					<span className="
 						text-gray-800 sm:text-gray-900 
 						text-lg sm:text-lg font-extralight sm:font-normal">

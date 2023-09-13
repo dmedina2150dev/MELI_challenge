@@ -9,9 +9,9 @@ export default function CardList({ products }: CardListProps) {
 
   return (
     <section className="
-         bg-white shadow rounded
-          mx-auto p-4
-         w-3/4 sm:w-3/5 md:w-2/4 lg:w-2/3 xl:w-3/5">
+      bg-white shadow rounded
+        p-4 mx-auto container
+        w-3/4 sm:w-3/4 md:w-3/4 lg:w-3/4 xl:w-3/4">
       {
         products.map(product => (
           <CardProduct

@@ -9,7 +9,7 @@ export const useProducts = ({ searchsProducts }: Props): Product[] => {
 
     console.log({searchsProducts})
 
-    const products: Product[] = searchsProducts.map( product => ({
+    const products: Product[] = searchsProducts?.map( product => ({
         id: product.id,
         title: product.title,
         price: {

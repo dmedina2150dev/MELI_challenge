@@ -13,19 +13,6 @@ export function Providers({ children }: ProvidersProps) {
                 <Navbar />
             </header>
             <main className="mt-24">
-                <aside className="hidden md:hidden">
-                    <h4>Precio</h4>
-                    <p>
-                        $ 40.000 <span>a</span> $50.000 <span>(56)</span>
-                    </p>
-                    <p>
-                        $ 50.000 <span>a</span> $60.000 <span>(6)</span>
-                    </p>
-                    <p>
-                        $ 60.000 <span>a</span> $70.000 <span>(20)</span>
-                    </p>
-                </aside>
-                
                 {children}          
             </main>
             <div className="w-full h-12 fixed bottom-0 bg-white rounded text-gray-200 sm:flex md:hidden">

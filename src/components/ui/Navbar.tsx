@@ -5,7 +5,7 @@ export default function Navbar() {
 
     return (
         <nav className="
-            w-3/4 sm:w-3/5 md:w-2/4 lg:w-2/3 xl:w-3/5
+            container
             flex justify-center items-center gap-1
             transition-all
             m-auto z-20 top-0 p-4">
