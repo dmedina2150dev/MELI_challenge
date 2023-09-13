@@ -1,13 +1,16 @@
 'use client'
 
 import { useContext, useState } from 'react';
+import { useRouter } from 'next/navigation';
+
 import { ArrorLowShort, ArrowUpShort } from '../icons/Arrows';
 import { AppContext } from '@/store/context';
 import { Sort } from './interfaces';
 
 export default function Sort() {
+    const router = useRouter();
     const [show, setShow] = useState(false);
-    const { termSearch, selectedSort, sortAvailables: sorts, hanldleSelectedSort } = useContext(AppContext);
+    const { termSearch, selectedSort, sortAvailables:sorts, hanldleSelectedSort } = useContext(AppContext);
 
     const toogleOption = () => {
         setShow(!show)
@@ -15,7 +18,8 @@ export default function Sort() {
 
     const changeSelected = ( sort: Sort ) => {
         hanldleSelectedSort( sort );
-        setShow( false )
+        setShow( false );
+        router.push(`/search/${termSearch}?sort=${sort.id}`);
     }
 
     return (

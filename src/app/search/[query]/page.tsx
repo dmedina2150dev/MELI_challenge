@@ -1,21 +1,27 @@
-import React from "react";
 
-import Container from "@/components/products/Container";
+import ContainerProducts from '@/components/products/ContainerProducts';
 
 type PageProps = {
 	params: { query: string };
 	searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-const fetchSearchsProducts = async ( query: string ) => {
-	return fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${query}&limit=10`)
-		.then( res => res.json() )
+async function fetchSearchsProducts( query: string, params: any) {
+	let url = `https://api.mercadolibre.com/sites/MLA/search?q=${ query }&limit=10`;
+	const sort = params['sort'];
+
+	if (sort) {
+		url = `https://api.mercadolibre.com/sites/MLA/search?q=${ query }&sort=${ sort }&limit=10`
+	}
+		
+	return fetch(url)
+		.then(res => res.json());
 }
 
-export default async function SearchPage({ params }: PageProps) {
+export default async function SearchPage({ params, searchParams }: PageProps) {
+	
+	const response = await fetchSearchsProducts(params.query, searchParams);
 
-	const { query } = params;
-	const search = await fetchSearchsProducts(query);
+	return  <ContainerProducts response={ response } />
 
-	return  <Container response={ search } />
 }

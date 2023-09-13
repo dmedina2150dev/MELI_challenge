@@ -1,5 +1,6 @@
 'use client'
 
+import { useContext } from 'react'
 import { useRouter } from 'next/navigation'
 
 import { useForm } from 'react-hook-form'
@@ -8,7 +9,6 @@ import * as z from 'zod'
 
 import { searchSchema } from '../products/schema/search'
 import SearchIcon from '../icons/Search'
-import { useContext } from 'react'
 import { AppContext } from '@/store/context'
 
 type FormData = z.infer<typeof searchSchema>;
@@ -16,7 +16,7 @@ type FormData = z.infer<typeof searchSchema>;
 export default function SearchForm() {
     const router = useRouter()
 
-    const { termSearch, addTermSearch } = useContext(AppContext)
+    const { termSearch, selectedSort, addTermSearch } = useContext(AppContext)
 
     const {
         handleSubmit,
@@ -31,7 +31,10 @@ export default function SearchForm() {
 
     async function onSubmit(data: FormData) {
         addTermSearch(data.search);
-        router.push(`/search/${ data.search }`)
+        
+        console.log(isDirty, isValid)
+
+        router.push(`/search/${data.search}`)
     }
 
 
@@ -41,7 +44,7 @@ export default function SearchForm() {
                 <div className='relative w-full'>
                     <input
                         type='search'
-                        { ...register('search', { required: true }) }
+                        { ...register('search', { required: true, minLength: 3 }) }
                         name='search'
                         id='search'
                         autoComplete='off'

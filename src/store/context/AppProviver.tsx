@@ -13,7 +13,7 @@ const INITIAL_STATE: ContextState = {
     termSearch: '',
     products: [],
     sortAvailables: [],
-    selectedSort: { id: '', name: '' },
+    selectedSort: {id: 'relevance', name: 'Más relevantes'},
 }
 
 export const AppProvider = ({ children }: AppProviderProps)  => {
