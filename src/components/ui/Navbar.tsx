@@ -7,7 +7,7 @@ export default function Navbar () {
             container
             flex justify-center items-center gap-1
             transition-all
-            m-auto z-20 top-0 p-4'
+            m-auto relative z-50 top-0 p-4'
     >
       <div className=''>
         <a href='/' className='flex items-center'>

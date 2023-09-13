@@ -6,24 +6,20 @@ type PageProps = {
 }
 
 async function fetchSearchsProducts (query: string, params: any) {
-  let url = `https://api.mercadolibre.com/sites/MLA/search?q=${query}&limit=10`
+  let url = `https://api.mercadolibre.com/sites/MLA/search?q=${query}`
   const sort = params.sort
   const price = params.price
-  // console.log(params)
-  if (sort) {
-    url = `https://api.mercadolibre.com/sites/MLA/search?q=${query}&sort=${sort}&limit=10`
-  } else if (price && sort) {
-    url = `https://api.mercadolibre.com/sites/MLA/search?q=${query}&sort=${sort}&price=${price}&limit=10`
-  } else if (price) {
-    url = `https://api.mercadolibre.com/sites/MLA/search?q=${query}&price=${price}&limit=10`
-  }
-  // console.log(url)
-  return fetch(url)
+
+  url += (price) ? `&price=${price}` : ''
+  url += (sort) ? `&sort=${sort}` : ''
+  url += '&limit=10'
+
+  return fetch(url, { cache: 'no-cache' })
     .then(res => res.json())
 }
 
 export default async function SearchPage ({ params, searchParams }: PageProps) {
   const response = await fetchSearchsProducts(params.query, searchParams)
-
+  console.log(response)
   return <ContainerProducts response={response} />
 }

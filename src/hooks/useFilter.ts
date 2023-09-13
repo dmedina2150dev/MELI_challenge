@@ -33,7 +33,6 @@ export const useFilter = () => {
     if (!price.minPrice || !price.maxPrice) {
       return
     }
-    console.log(price)
 
     const newFilter = `${price.minPrice}-${price.maxPrice}`
     hanldleSelectedPrice(newFilter)

@@ -2,6 +2,7 @@
 'use client'
 
 import { useContext, useEffect } from 'react'
+import { redirect } from 'next/navigation'
 
 import { AppContext } from '@/store/context'
 
@@ -9,7 +10,6 @@ import CardList from './CardList'
 import { ResponseMethod } from './interfaces/requests'
 import { useProducts, useSort, useFilterAvailable } from '@/hooks'
 import Filters from './Filters'
-import { redirect } from 'next/navigation'
 import Sorting from './Sort'
 
 interface Props {
@@ -33,8 +33,10 @@ export default function ContainerProducts ({ response }: Props) {
   }
 
   return (
-    <section className='min-h-screen min-w-full relative -z-10'>
-      <Sorting />
+    <section className='min-h-screen min-w-full'>
+      <div className='container mx-auto flex justify-end'>
+        <Sorting />
+      </div>
       <div className='flex items-start mx-auto container'>
         <Filters />
         <CardList products={products} />

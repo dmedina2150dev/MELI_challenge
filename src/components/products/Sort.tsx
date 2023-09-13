@@ -24,6 +24,7 @@ export default function Sorting () {
 
     if (termSearch) {
       const url = buildUrl(termSearch, sort, selectedPrice)
+
       router.push(url)
     } else {
       router.push('/error')
@@ -32,7 +33,7 @@ export default function Sorting () {
 
   return (
     <div className='mx-auto hidden sm:hidden md:flex lg:flex xl:flex justify-end container'>
-      <div className='relative inline-block'>
+      <div className='inline-block'>
         <div className='flex items-center justify-between'>
           <button
             type='button'
@@ -56,7 +57,7 @@ export default function Sorting () {
         {show && (
 
           <div
-            className='absolute right-0 mt-2 w-38 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'
+            className='absolute right-18 mt-2 w-42 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'
             role='menu' aria-orientation='vertical' aria-labelledby='menu-button' tabIndex={1}
           >
             <div className='py-0 divide-y divide-gray-300' role='none'>
