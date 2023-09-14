@@ -20,6 +20,6 @@ async function fetchSearchsProducts (query: string, params: any) {
 
 export default async function SearchPage ({ params, searchParams }: PageProps) {
   const response = await fetchSearchsProducts(params.query, searchParams)
-  console.log(response)
+
   return <ContainerProducts response={response} />
 }

@@ -8,7 +8,7 @@ export default function Filters () {
   const { price, availableFilters, onSubmitPrice, onChangePrice, onSelectFilter } = useFilter()
 
   return (
-    <section className='px-4 hidden sm:hidden md:block lg:block xl:block'>
+    <section className='px-4'>
       <h4 className='font-semibold'>{availableFilters[0]?.name || 'Precio'}</h4>
       {
                 availableFilters.length === 0
@@ -18,11 +18,9 @@ export default function Filters () {
                       {
                               availableFilters[0]?.values.map(filter => (
                                 <li key={filter.id} className='flex gap-2 text-sm text-slate-500 my-1'>
-                                  {/* <Link href={ `/search/${termSearch}?${ sort.id ? `sort=${sort.id.toUpperCase()}` : '' }&price=${filter.id}` }> */}
                                   <button onClick={() => onSelectFilter(filter.id)}>
                                     {filter.name}
                                   </button>
-                                  {/* </Link> */}
                                   <span className='w-3.5 text-slate-400'>({filter.results})</span>
                                 </li>
                               ))
@@ -41,7 +39,7 @@ export default function Filters () {
                           placeholder='Mínimo'
                           autoComplete='off'
                         />
-                        <hr className='ui_hr' />
+                        <hr className='w-2 h-px mx-auto my-4 bg-gray-300 border-0 rounded md:my-10 dark:bg-gray-700' />
                         <input
                           className='w-24 h-8 rounded-md bg-white text-slate-500 text-xs text-left'
                           type='number'

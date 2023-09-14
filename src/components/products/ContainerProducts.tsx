@@ -38,7 +38,9 @@ export default function ContainerProducts ({ response }: Props) {
         <Sorting />
       </div>
       <div className='flex items-start mx-auto container'>
-        <Filters />
+        <div className='hidden sm:hidden md:block lg:block xl:block'>
+          <Filters />
+        </div>
         <CardList products={products} />
       </div>
     </section>
