@@ -28,7 +28,7 @@ export default function FooterOptions () {
   return (
     <>
       <div className='w-full flex flex-col gap-4'>
-        <div className='px-4 flex justify-center gap-3' role='none'>
+        <div className='px-4 flex justify-start gap-3' role='none'>
           <h3 className='text-gray-500'>Ordenar por:</h3>
           <ul className='flex items-center gap-1'>
             {
@@ -47,7 +47,7 @@ export default function FooterOptions () {
             }
           </ul>
         </div>
-        <div className='px-4 flex justify-start gap-3 text-gray-500' role='none'>
+        <div className='px-4 pb-12 flex justify-start gap-3 text-gray-500' role='none'>
           <Filters />
         </div>
       </div>
