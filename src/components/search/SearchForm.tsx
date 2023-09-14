@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext } from 'react'
+// import { useContext } from 'react'
 import { useRouter } from 'next/navigation'
 
 import { useForm } from 'react-hook-form'
@@ -9,15 +9,17 @@ import * as z from 'zod'
 
 import { searchSchema } from '../products/schema'
 import SearchIcon from '../icons/Search'
-import { AppContext } from '@/store/context'
+// import { AppContext } from '@/store/context'
 import { buildUrl } from '@/helpers/buildUrl'
+import { useAppStore } from '@/hooks'
 
 type FormData = z.infer<typeof searchSchema>;
 
 export default function SearchForm () {
   const router = useRouter()
 
-  const { termSearch, selectedSort, selectedPrice, addTermSearch } = useContext(AppContext)
+  const { termSearch, selectedSort, selectedPrice, loadTerm } = useAppStore()
+  // const { termSearch, selectedSort, selectedPrice, addTermSearch } = useContext(AppContext)
 
   const {
     handleSubmit,
@@ -30,7 +32,9 @@ export default function SearchForm () {
   })
 
   async function onSubmit (data: FormData) {
-    addTermSearch(data.search)
+    // addTermSearch(data.search)
+    loadTerm(data.search)
+    console.log(selectedSort)
     const url = buildUrl(data.search, selectedSort, selectedPrice)
     router.push(url)
   }

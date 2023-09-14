@@ -16,7 +16,7 @@ const initialState: AppState = {
   products: [],
   sortAvailables: [],
   availableFilters: [],
-  selectedSort: undefined,
+  selectedSort: '',
   selectedPrice: ''
 } as unknown as AppState
 

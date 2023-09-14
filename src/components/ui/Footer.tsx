@@ -1,18 +1,20 @@
 'use client'
 
-import { useContext } from 'react'
-import { AppContext } from '@/store/context'
+// import { useContext } from 'react'
+// import { AppContext } from '@/store/context'
 import { Sort } from '../products/interfaces'
 import { buildUrl } from '@/helpers/buildUrl'
 import { useRouter } from 'next/navigation'
 import Filters from '../products/Filters'
+import { useAppStore } from '@/hooks'
 
 export default function FooterOptions () {
   const router = useRouter()
-  const { termSearch, selectedSort, sortAvailables: sorts, selectedPrice, hanldleSelectedSort } = useContext(AppContext)
+  // const { termSearch, selectedSort, sortAvailables: sorts, selectedPrice, hanldleSelectedSort } = useContext(AppContext)
+  const { termSearch, selectedSort, sortAvailables: sorts, selectedPrice, setCurrentSort } = useAppStore()
 
   const changeSelected = (sort: Sort) => {
-    hanldleSelectedSort(sort)
+    setCurrentSort(sort)
 
     if (termSearch) {
       const url = buildUrl(termSearch, sort, selectedPrice)

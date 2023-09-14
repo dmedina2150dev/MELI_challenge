@@ -1,25 +1,28 @@
 'use client'
 
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 import { ArrorLowShort, ArrowUpShort } from '../icons/Arrows'
-import { AppContext } from '@/store/context'
+// import { AppContext } from '@/store/context'
 
 import { buildUrl } from '@/helpers/buildUrl'
 import { Sort } from './interfaces'
+import { useAppStore } from '@/hooks'
 
 export default function Sorting () {
   const router = useRouter()
   const [show, setShow] = useState(false)
-  const { termSearch, selectedSort, sortAvailables: sorts, selectedPrice, hanldleSelectedSort } = useContext(AppContext)
+  // const { termSearch, selectedSort, sortAvailables: sorts, selectedPrice, hanldleSelectedSort } = useContext(AppContext)
+  const { termSearch, selectedSort, selectedPrice, sortAvailables: sorts, setCurrentSort } = useAppStore()
 
   const toogleOption = () => {
     setShow(!show)
   }
 
   const changeSelected = (sort: Sort) => {
-    hanldleSelectedSort(sort)
+    // hanldleSelectedSort(sort)
+    setCurrentSort(sort)
     setShow(false)
 
     if (termSearch) {
@@ -43,7 +46,7 @@ export default function Sorting () {
             aria-expanded='true'
             aria-haspopup='true'
           >
-            Ordenar por <span className='font-normal'>{selectedSort.name || 'Más relevantes'}</span>
+            Ordenar por <span className='font-normal'>{selectedSort?.name || 'Más relevantes'}</span>
             <span className='transition-all'>
               {
                   (show)
