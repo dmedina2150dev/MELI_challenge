@@ -10,7 +10,7 @@ import CardList from './CardList'
 import { ResponseMethod } from './interfaces/requests'
 import { useProducts, useSort, useFilterAvailable, useAppStore } from '@/hooks'
 import Filters from './Filters'
-import Sorting from './Sort'
+import Sorting from '../sort/Sort'
 import { SearchResult } from './interfaces'
 
 interface Props {

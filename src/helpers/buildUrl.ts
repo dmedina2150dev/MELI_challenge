@@ -1,4 +1,4 @@
-import { Sort } from '@/components/products/interfaces'
+import { Sort } from '@/components/sort/interface/sort'
 
 export function buildUrl (term: string, sort: Sort, price: string): string {
   let url = `/search/${term}?`

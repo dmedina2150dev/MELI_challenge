@@ -7,8 +7,9 @@ import { ArrorLowShort, ArrowUpShort } from '../icons/Arrows'
 // import { AppContext } from '@/store/context'
 
 import { buildUrl } from '@/helpers/buildUrl'
-import { Sort } from './interfaces'
+
 import { useAppStore } from '@/hooks'
+import { Sort } from './interface/sort'
 
 export default function Sorting () {
   const router = useRouter()
@@ -48,11 +49,7 @@ export default function Sorting () {
           >
             Ordenar por <span className='font-normal'>{selectedSort?.name || 'Más relevantes'}</span>
             <span className='transition-all'>
-              {
-                  (show)
-                    ? <ArrorLowShort />
-                    : <ArrowUpShort />
-              }
+              {(show) ? <ArrorLowShort /> : <ArrowUpShort />}
             </span>
           </button>
         </div>
@@ -79,7 +76,7 @@ export default function Sorting () {
                       </button>
                     </li>
                   ))
-}
+                }
               </ul>
             </div>
           </div>

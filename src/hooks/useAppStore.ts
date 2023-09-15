@@ -1,6 +1,7 @@
 import { loadFilterCurrent, loadSortCurrent, loadStore, searchTerm } from '@/store/redux/appSlice'
 import { useAppSelector, useAppDispatch } from './useStore'
-import { SearchResult, Sort } from '@/components/products/interfaces'
+import { SearchResult } from '@/components/products/interfaces'
+import { Sort } from '@/components/sort/interface/sort'
 
 export const useAppStore = () => {
   const { products, availableFilters, sortAvailables, selectedSort, selectedPrice, termSearch } = useAppSelector(state => state.products)

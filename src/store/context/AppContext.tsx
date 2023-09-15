@@ -1,5 +1,6 @@
 import { createContext } from 'react'
-import { Filter, Product, Sort } from '@/components/products/interfaces'
+import { Filter, Product } from '@/components/products/interfaces'
+import { Sort } from '@/components/sort/interface/sort'
 
 export interface AppContextProps {
     termSearch: string;

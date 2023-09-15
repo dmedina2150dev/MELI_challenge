@@ -1,4 +1,4 @@
-import { Sort } from '@/components/products/interfaces'
+import { Sort } from '@/components/sort/interface/sort'
 
 interface Props {
     sort: Sort;

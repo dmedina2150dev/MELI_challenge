@@ -2,11 +2,11 @@
 
 // import { useContext } from 'react'
 // import { AppContext } from '@/store/context'
-import { Sort } from '../products/interfaces'
 import { buildUrl } from '@/helpers/buildUrl'
 import { useRouter } from 'next/navigation'
 import Filters from '../products/Filters'
 import { useAppStore } from '@/hooks'
+import { Sort } from '../sort/interface/sort'
 
 export default function FooterOptions () {
   const router = useRouter()
