@@ -1,4 +1,4 @@
-import { Sort } from '.'
+import { Sort } from '@/components/sort/interface/sort'
 
 export interface Paging {
     total: number;

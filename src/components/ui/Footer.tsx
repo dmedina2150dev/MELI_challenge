@@ -4,7 +4,7 @@
 // import { AppContext } from '@/store/context'
 import { buildUrl } from '@/helpers/buildUrl'
 import { useRouter } from 'next/navigation'
-import Filters from '../products/Filters'
+import Filters from '../filters-price/Filters'
 import { useAppStore } from '@/hooks'
 import { Sort } from '../sort/interface/sort'
 

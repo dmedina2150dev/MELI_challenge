@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Filter, Product, SearchResult } from '@/components/products/interfaces'
+import { Product, SearchResult } from '@/components/products/interfaces'
 import { Sort } from '@/components/sort/interface/sort'
+import { Filter } from '@/components/filters-price/interfaces/filter'
 
 export interface AppState {
     termSearch: string;

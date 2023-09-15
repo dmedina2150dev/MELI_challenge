@@ -1,8 +1,9 @@
 import React, { useReducer } from 'react'
 import { ContextState, appReducer } from './appReducer'
 import { AppContext } from '.'
-import { Product, Filter } from '@/components/products/interfaces'
+import { Product } from '@/components/products/interfaces'
 import { Sort } from '@/components/sort/interface/sort'
+import { Filter } from '@/components/filters-price/interfaces/filter'
 
 interface AppProviderProps {
     children: React.ReactNode | React.ReactNode[]

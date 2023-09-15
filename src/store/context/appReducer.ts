@@ -1,5 +1,6 @@
-import { Filter, Product } from '@/components/products/interfaces'
+import { Product } from '@/components/products/interfaces'
 import { Sort } from '@/components/sort/interface/sort'
+import { Filter } from '@/components/filters-price/interfaces/filter'
 
 export interface ContextState {
     termSearch: string;
