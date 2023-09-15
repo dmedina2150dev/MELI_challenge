@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from 'next/image'
 import { Product } from './interfaces/product'
 
 interface CardProductProps {
@@ -13,10 +13,13 @@ export default function CardProduct ({ product }: CardProductProps) {
         flex gap-1 flex-col flex-wrap space-x-4 lg:flex-row xl:flex-row'
       >
         <div className='m-auto w-40 sm:w-48 md:w-48 xl:w-48 h-40 sm:h-48 md:h-48 xl:h-48 rounded flex-shrink-0'>
-          <img
+          <Image
             src={product.picture}
             alt={product.title}
+            width={100}
+            height={100}
             className='w-full h-full object-contain'
+            priority={false}
           />
         </div>
         <div className='flex flex-col gap-2 sm:gap-2  pt-4 flex-1 min-w-0'>

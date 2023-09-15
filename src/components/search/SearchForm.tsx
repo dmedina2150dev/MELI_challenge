@@ -34,7 +34,6 @@ export default function SearchForm () {
   async function onSubmit (data: FormData) {
     // addTermSearch(data.search)
     loadTerm(data.search)
-    console.log(selectedSort)
     const url = buildUrl(data.search, selectedSort, selectedPrice)
     router.push(url)
   }
