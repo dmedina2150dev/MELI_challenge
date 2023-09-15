@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from 'next/image'
 import SearchForm from '../search/SearchForm'
 
 export default function Navbar () {
@@ -11,7 +11,13 @@ export default function Navbar () {
     >
       <div className=''>
         <a href='/' className='flex items-center'>
-          <img src='/logo_ml.png' className='h-8 mr-3' alt='Meli Logo' />
+          <Image
+            src='/logo_ml.png'
+            width={40}
+            height={40}
+            className='h-8 mr-3'
+            alt='Meli Logo'
+          />
         </a>
       </div>
       <div className='w-full'>
