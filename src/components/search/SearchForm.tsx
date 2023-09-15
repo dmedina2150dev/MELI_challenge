@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 
-import { searchSchema } from '../products/schema'
+import { searchSchema } from './schema'
 import SearchIcon from '../icons/Search'
 // import { AppContext } from '@/store/context'
 import { buildUrl } from '@/helpers/buildUrl'
