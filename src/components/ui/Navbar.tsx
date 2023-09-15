@@ -17,6 +17,7 @@ export default function Navbar () {
             height={40}
             className='h-8 mr-3'
             alt='Meli Logo'
+            priority
           />
         </a>
       </div>

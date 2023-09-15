@@ -23,10 +23,12 @@ export function Providers ({ children }: ProvidersProps) {
       <main className='mt-24 mb-24'>
         {children}
       </main>
-      <div className={`w-full fixed bottom-0 bg-slate-300 rounded text-gray-200 block sm:block md:hidden ${(showMenu) ? 'h-64' : 'h-12'}`}>
-        <button onClick={toggleMenu} className='mx-auto text-base text-slate-400 p-4'>
-          Ordenar / Filtrar
-        </button>
+      <div className={`w-full fixed bottom-0 shadow-md border-t-2 rounded-t-xl text-gray-200 block sm:block md:hidden transition-all ease-in-out ${(showMenu) ? 'h-64' : 'h-14'}`}>
+        <div className='flex flex-col justify-center'>
+          <button onClick={toggleMenu} className='mx-auto text-base text-slate-400 py-4 px-2 border-'>
+            Ordenar / Filtrar
+          </button>
+        </div>
         <div className='flex flex-col justify-center'>
           <FooterOptions />
         </div>
