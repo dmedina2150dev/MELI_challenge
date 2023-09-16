@@ -23,7 +23,7 @@ export function Providers ({ children }: ProvidersProps) {
       <main className='mt-24 mb-24'>
         {children}
       </main>
-      <div className={`w-full fixed bottom-0 shadow-md shadow-black border-t-2 rounded-t-xl bg-white text-gray-200 block sm:block md:hidden transition-all ease-in-out ${(showMenu) ? 'h-64' : 'h-14'}`}>
+      <div className={`w-full fixed bottom-0 shadow-md shadow-black border-t-2 rounded-t-xl bg-white text-gray-200 block sm:block md:hidden transition-all ease-in-out ${(showMenu) ? 'h-68' : 'h-14'}`}>
         <div className='flex flex-col justify-center'>
           <span onClick={toggleMenu} className='mx-auto text-base text-slate-400 py-4 px-2 active:bg-white target:bg-white focus:bg-white'>
             Ordenar / Filtrar
