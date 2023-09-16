@@ -1,16 +1,15 @@
-import { useAppStore } from '@/hooks'
+import React, { useContext } from 'react'
 import { useRouter } from 'next/navigation'
-import React from 'react'
 import { Sort } from './interface/sort'
 import { buildUrl } from '@/helpers/buildUrl'
+import { AppContext } from '@/store/context'
 
 export const SortMobile = () => {
   const router = useRouter()
-  // const { termSearch, selectedSort, sortAvailables: sorts, selectedPrice, hanldleSelectedSort } = useContext(AppContext)
-  const { termSearch, selectedSort, sortAvailables: sorts, selectedPrice, setCurrentSort } = useAppStore()
+  const { termSearch, selectedSort, sortAvailables: sorts, selectedPrice, hanldleSelectedSort } = useContext(AppContext)
 
   const changeSelected = (sort: Sort) => {
-    setCurrentSort(sort)
+    hanldleSelectedSort(sort)
 
     if (termSearch) {
       const url = buildUrl(termSearch, sort, selectedPrice)

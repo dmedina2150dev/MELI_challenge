@@ -1,9 +1,8 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useContext, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 import { buildUrl } from '@/helpers/buildUrl'
-// import { AppContext } from '@/store/context'
-import { useAppStore } from '.'
+import { AppContext } from '@/store/context'
 
 const initPrice = {
   maxPrice: 0,
@@ -14,12 +13,10 @@ export const useFilter = () => {
   const router = useRouter()
 
   const [price, setPrice] = useState(initPrice)
-  // const { termSearch: query, selectedSort: sort, availableFilters, hanldleSelectedPrice } = useContext(AppContext)
-  const { termSearch: query, selectedSort: sort, availableFilters, setCurrentPrice } = useAppStore()
+  const { termSearch: query, selectedSort: sort, availableFilters, hanldleSelectedPrice } = useContext(AppContext)
 
   const onSelectFilter = (price: string) => {
-    // hanldleSelectedPrice(price)
-    setCurrentPrice(price)
+    hanldleSelectedPrice(price)
     const url = buildUrl(query!, sort!, price)
     router.push(url)
   }
@@ -38,7 +35,7 @@ export const useFilter = () => {
     }
 
     const newFilter = `${price.minPrice}-${price.maxPrice}`
-    setCurrentPrice(newFilter)
+    hanldleSelectedPrice(newFilter)
     const url = buildUrl(query!, sort!, newFilter)
 
     router.push(url)

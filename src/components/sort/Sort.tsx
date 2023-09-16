@@ -1,29 +1,26 @@
 'use client'
 
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 import { ArrorLowShort, ArrowUpShort } from '../icons/Arrows'
-// import { AppContext } from '@/store/context'
+import { AppContext } from '@/store/context'
 
 import { buildUrl } from '@/helpers/buildUrl'
 
-import { useAppStore } from '@/hooks'
 import { Sort } from './interface/sort'
 
 export default function Sorting () {
   const router = useRouter()
   const [show, setShow] = useState(false)
-  // const { termSearch, selectedSort, sortAvailables: sorts, selectedPrice, hanldleSelectedSort } = useContext(AppContext)
-  const { termSearch, selectedSort, selectedPrice, sortAvailables: sorts, setCurrentSort } = useAppStore()
+  const { termSearch, selectedSort, sortAvailables: sorts, selectedPrice, hanldleSelectedSort } = useContext(AppContext)
 
   const toogleOption = () => {
     setShow(!show)
   }
 
   const changeSelected = (sort: Sort) => {
-    // hanldleSelectedSort(sort)
-    setCurrentSort(sort)
+    hanldleSelectedSort(sort)
     setShow(false)
 
     if (termSearch) {

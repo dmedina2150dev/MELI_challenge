@@ -1,8 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import { Provider } from 'react-redux'
-import { store } from '@/store/redux/store'
-// import { AppProvider } from '@/store/context'
+import { AppProvider } from '@/store/context'
 import Navbar from '../ui/Navbar'
 import FooterOptions from '../ui/Footer'
 
@@ -16,7 +14,7 @@ export function Providers ({ children }: ProvidersProps) {
   }
 
   return (
-    <Provider store={store}>
+    <AppProvider>
       <header className='bg-amber-300 fixed w-full'>
         <Navbar />
       </header>
@@ -33,6 +31,6 @@ export function Providers ({ children }: ProvidersProps) {
           <FooterOptions />
         </div>
       </div>
-    </Provider>
+    </AppProvider>
   )
 }
