@@ -1,14 +1,18 @@
 import type { Metadata } from 'next'
 import ContainerProducts from '@/components/products/ContainerProducts'
+import { formatAndCapitalize } from '@/helpers/formatAndCapitalize'
 
 type PageProps = {
  params: { query: string }
  searchParams?: { [key: string]: string | string[] | undefined }
 }
 
-export const metadata: Metadata = {
-  title: 'SEO Title',
-  description: 'SEO Title'
+export async function generateMetadata ({ params, searchParams }:PageProps): Promise<Metadata> {
+  const { query } = params
+  const title = formatAndCapitalize(query)
+  return {
+    title: `${title} | MELI Chile`
+  }
 }
 
 async function fetchSearchsProducts (query: string, params: any) {
