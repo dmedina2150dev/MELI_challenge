@@ -1,8 +1,14 @@
+import type { Metadata } from 'next'
 import ContainerProducts from '@/components/products/ContainerProducts'
 
 type PageProps = {
  params: { query: string }
  searchParams?: { [key: string]: string | string[] | undefined }
+}
+
+export const metadata: Metadata = {
+  title: 'SEO Title',
+  description: 'SEO Title'
 }
 
 async function fetchSearchsProducts (query: string, params: any) {
